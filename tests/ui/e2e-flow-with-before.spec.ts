@@ -54,7 +54,7 @@ test('TL-17-7 logout', async () => {
   await expect(authPage.signInButton).toBeVisible()
 })
 
-test('TL-18-1 Check not found page', async ({page}) => {
+test('TL-18-1 Check not found page', async ({ page }) => {
   const notFoundPage = new NotFoundPage(page, `${SERVICE_URL}/order/-1`)
   const orderPage = new OrderPage(page)
 

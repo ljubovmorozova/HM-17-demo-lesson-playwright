@@ -1,7 +1,6 @@
 import { expect, Locator, Page, test } from '@playwright/test'
 
 export default class BasePage {
-
   readonly page: Page
   readonly url: string
   readonly languageSwitcher: Locator
@@ -48,5 +47,4 @@ export default class BasePage {
       await element.fill(text)
     })
   }
-
 }
