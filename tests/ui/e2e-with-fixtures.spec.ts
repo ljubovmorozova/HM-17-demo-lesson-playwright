@@ -42,7 +42,7 @@ test('TL-23-3 Find active delivered status using fixtures', async ({
   deliveredStatus,
   orderPage,
   foundPage,
- }) => {
+}) => {
   await orderPage.statusButton.click()
   await orderPage.fillElement(orderPage.orderIdInputField, orderId)
   const trackOrderResponse = orderPage.page.waitForResponse('**/orders/*')

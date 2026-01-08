@@ -1,6 +1,6 @@
 import { test } from '../fixtures/basePage.fixture'
 import { expect } from '@playwright/test'
-import {LoginPage } from '../pages/login-page'
+import { LoginPage } from '../pages/login-page'
 import { OrderPage } from '../pages/order-page'
 import FoundPage from '../pages/found-page'
 
