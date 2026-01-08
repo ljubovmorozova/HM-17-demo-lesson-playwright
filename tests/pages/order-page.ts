@@ -1,4 +1,4 @@
-import { expect, Locator, Page, test } from '@playwright/test'
+import { expect, Page, Locator, test } from '@playwright/test'
 import BasePage from './base-page'
 import { SERVICE_URL } from '../../config/env-data'
 
@@ -8,7 +8,6 @@ export class OrderPage extends BasePage {
   readonly phoneField: Locator
   readonly commentField: Locator
   readonly createOrderButton: Locator
-  readonly logoutButton: Locator
 
   // creation popup
   readonly successfulCreationPopup: Locator
@@ -18,7 +17,7 @@ export class OrderPage extends BasePage {
   // search popup elements
   readonly searchOrderPopup: Locator
   readonly orderIdInputField: Locator
-  readonly trackButton: Locator
+  readonly trackButton
 
   constructor(page: Page, url?: string) {
     super(page, url ? url : SERVICE_URL)
@@ -27,7 +26,6 @@ export class OrderPage extends BasePage {
     this.phoneField = page.getByTestId('phone-input')
     this.commentField = page.getByTestId('comment-input')
     this.createOrderButton = page.getByTestId('createOrder-button')
-    this.logoutButton = page.getByTestId('logout-button')
 
     this.successfulCreationPopup = page.locator('main > .popup')
     this.okButton = this.successfulCreationPopup.getByTestId(
@@ -49,9 +47,10 @@ export class OrderPage extends BasePage {
     await this.checkElementVisibility(this.createOrderButton)
   }
 
+  // condition ? true : false
   async checkCreationPopupVisible(visible = true): Promise<void> {
     expect(await this.successfulCreationPopup.getAttribute('class')).toContain(
-      visible ? 'popup popup_opened' : 'undefined',
+      visible ? 'popup_opened' : 'undefined',
     )
   }
 
@@ -70,7 +69,7 @@ export class OrderPage extends BasePage {
   }
 
   async getOrderIdFromPopup(): Promise<number> {
-    const text = await this.codeSpan.innerText()
+    const text = await this.codeSpan.innerText() // Tracking code: 13223
     const strArray = text.split(' ')
 
     return Number(strArray[strArray.length - 1])

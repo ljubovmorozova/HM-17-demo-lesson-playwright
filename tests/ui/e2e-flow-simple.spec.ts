@@ -13,9 +13,9 @@ test('TL-17-1 signIn button disabled when incorrect data inserted', async ({ pag
 })
 
 test('TL-17-2 login with correct credentials and verify order creation page', async ({ page }) => {
-  const loginPage = new LoginPage(page)
+  const authPage = new LoginPage(page)
 
-  await loginPage.open()
-  const orderCreationPage = await loginPage.signIn(USERNAME, PASSWORD)
+  await authPage.open()
+  const orderCreationPage = await authPage.signIn(USERNAME, PASSWORD)
   await orderCreationPage.checkInnerComponentsVisible()
 })
